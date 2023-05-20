@@ -39,4 +39,60 @@ public class Ordered {
     @ManyToOne
     @JoinColumn
     Customer customer;
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
+    }
+
+    public int getTotalValue() {
+        return totalValue;
+    }
+
+    public void setTotalValue(int totalValue) {
+        this.totalValue = totalValue;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public String getCardUsed() {
+        return cardUsed;
+    }
+
+    public void setCardUsed(String cardUsed) {
+        this.cardUsed = cardUsed;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }
