@@ -22,7 +22,11 @@ import java.util.UUID;
 @Service
 public class OrderService {
 
-    @Autowired ProductService productService;
+    @Autowired 
+    ProductService productService;
+    
+     @Autowired
+    JavaMailSender emailSender;
 
     @Autowired
     CustomerRepository customerRepository;
@@ -109,6 +113,7 @@ public class OrderService {
         product.getItemList().add(item);
 
         Ordered savedOrder = orderedRepository.save(order); // order and item
+        
 
         OrderResponseDto orderResponseDto = new OrderResponseDto();
         orderResponseDto.setOrderDate(savedOrder.getOrderDate());
@@ -124,11 +129,19 @@ public class OrderService {
             itemResponseDto.setTotalPrice(itemEntity.getRequiredQuantity()*itemEntity.getProduct().getPrice());
             itemResponseDto.setProductName(itemEntity.getProduct().getName());
             itemResponseDto.setQuantity(itemEntity.getRequiredQuantity());
-
             items.add(itemResponseDto);
         }
 
         orderResponseDto.setItems(items);
+        
+        String text = "Congrats your order with total value "+order.gettotalValue()+" has been placed";
+
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("backendavengers@gmail.com");
+        message.setTo(customer.getEmail());
+        message.setSubject("Order Placed Notification");
+        message.setText(text);
+        emailSender.send(message);
         return orderResponseDto;
 
     }
