@@ -137,7 +137,7 @@ public class OrderService {
         String text = "Congrats your order with total value "+order.gettotalValue()+" has been placed";
 
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("backendavengers@gmail.com");
+        message.setFrom("anushks23@gmail.com");
         message.setTo(customer.getEmail());
         message.setSubject("Order Placed Notification");
         message.setText(text);
