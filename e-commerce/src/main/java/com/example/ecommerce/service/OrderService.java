@@ -39,7 +39,7 @@ public class OrderService {
     @Autowired
     private OrderedRepository orderedRepository;
 
-    public Ordered placeOrder(Customer customer, Card card) throws Exception {
+   /* public Ordered placeOrder(Customer customer, Card card) throws Exception {
 
         Cart cart = customer.getCart();
 
@@ -64,7 +64,7 @@ public class OrderService {
             item.setOrder(order);
         order.setTotalValue(cart.getCartTotal());
         return order;
-    }
+    } */
 
     public OrderResponseDto placeOrder(OrderRequestDto orderRequestDto) throws Exception {
 
